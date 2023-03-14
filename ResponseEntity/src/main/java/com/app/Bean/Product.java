@@ -6,6 +6,8 @@ import java.util.List;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -36,6 +38,10 @@ public class Product implements Serializable{
 	Boolean available;
 	@ManyToOne @JoinColumn(name="categoryid")
 	Category category;
+	//sử dụng JsonIgnore đối với tất cả các mối quan hệ OneToMany
+	//để ngăn chặn truy suất ( kiểu bỏ qua cái phần dưới )
+	// khi trả về json thì không quan tâm cái field này ( ở đây là orderdetails)
+	@JsonIgnore
 	@OneToMany(mappedBy="product")
 	List<OrderDetail> orderdetails;
 	
