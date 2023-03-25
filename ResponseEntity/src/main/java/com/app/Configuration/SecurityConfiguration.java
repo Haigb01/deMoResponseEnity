@@ -45,8 +45,8 @@ public class SecurityConfiguration {
 				.passwordParameter("password")
 				.and()
 				.logout()
-				.logoutUrl("/logout")
-				.logoutSuccessUrl("/logout/success");
+				.logoutUrl("/logout")//link th:href="@{|/logout|}"
+				.logoutSuccessUrl("/logout/success");//logout xong di dau
 			return http.build();
 	}
 	
